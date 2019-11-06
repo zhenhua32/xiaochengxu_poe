@@ -1,0 +1,31 @@
+'''
+WARNNING: 这是自动生成的文件
+定义数据库存储的结构
+'''
+
+from enum import Enum, unique
+
+
+@unique
+class TYPE(Enum):
+{% for key in data.keys() %}
+  {{ key|string|striptags|trim }} = '{{ key|string|striptags|trim }}'
+{% endfor %}
+
+
+{% for key, items in data.items() -%}
+@unique
+class TYPE_{{ key }}(Enum):
+{% for name in items %}
+  {{ name|string|striptags|trim }} = '{{ name|string|striptags|trim }}'
+{% endfor %}
+
+
+{% endfor %}
+@unique
+class COLOR(Enum):
+  RED = '力量'
+  GREEN = '敏捷'
+  BLUE = '智慧'
+  GREY = '普通'
+
