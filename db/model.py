@@ -51,3 +51,33 @@ item_单手武器 = {
   '效果': [],
   '英文名': str,
 }
+
+item_双手武器 = {
+  'name': str,
+  'type': '双手武器',
+  'sub_type': TYPE_双手武器,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '物理伤害': [int, int],
+  '攻击暴击率': Decimal128,
+  '每秒攻击次数': Decimal128,
+  '武器范围': int,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+}
+
+item_副手 = {
+  'name': str,
+  'type': '副手',
+  'sub_type': TYPE_副手,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '护具': int,
+  '闪避值': int,
+  '能量护盾': int,
+  '格挡几率': Decimal128,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+}
