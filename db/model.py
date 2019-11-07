@@ -81,3 +81,61 @@ item_副手 = {
   '效果': [],
   '英文名': str,
 }
+
+item_护具 = {
+  'name': str,
+  'type': '护具',
+  'sub_type': TYPE_护具,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+  '护具': int,
+  '闪避值': int,
+  '能量护盾': int,
+}
+
+item_饰品 = {
+  'name': str,
+  'type': '饰品',
+  'sub_type': TYPE_饰品,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+}
+
+item_药剂 = {
+  'name': str,
+  'type': '药剂',
+  'sub_type': TYPE_药剂,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+}
+
+item_其他 = {
+  'name': str,
+  'type': '其他',
+  'sub_type': TYPE_其他,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+}
+
+item_帝王迷宫 = {
+  'name': str,
+  'type': '帝王迷宫',
+  'sub_type': TYPE_帝王迷宫,
+  'update': datetime.datetime.utcnow(),
+  'url': str,
+  '需求': str,
+  '效果': [],
+  '英文名': str,
+}

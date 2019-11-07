@@ -64,6 +64,9 @@ def count_fields(urls):
     resp = requests.get(url, headers=headers)
     data = resp.json()
 
+    if not isinstance(data, dict):
+      continue
+
     for line in data['data']:
       texts = line[1].replace('<br/>', '<br>').split('<br>')
       for html in texts[2:-1]:

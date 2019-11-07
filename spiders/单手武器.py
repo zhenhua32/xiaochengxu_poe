@@ -65,6 +65,9 @@ def parse_page(url, type_enum, atype, save_in_db=True):
   resp = requests.get(url, headers=headers)
   data = resp.json()
 
+  if not isinstance(data, dict):
+    return
+
   caption = data['caption'].split(' ')[0]
   sub_type = type_enum(caption).value
 
