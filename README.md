@@ -28,7 +28,7 @@ https://github.com/admiralobvious/vyper
 生成文件
 
 ```bash
-python ./gen/enums.py
+python -m gen.enums
 ```
 
 获取数据

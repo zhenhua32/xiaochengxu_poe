@@ -34,11 +34,14 @@ def get_top_urls(index=0) -> dict:
   resp = requests.get(url, headers=headers)
   body = BeautifulSoup(resp.text, 'html5lib')
 
-  data = {}  # 保存数据
+  data = {
+    '其他': [],
+  }  # 保存数据
 
   panel = body.select('.panel-body')[index].ul
   titles = panel.select('li.double_th')
   subs = panel.select('ul')
+  others = panel.select('ul.double > li[class^=col-xs-6]')
 
   for title, sub in zip(titles, subs):
     name = title.get_text(strip=True).replace('：', '')
@@ -51,6 +54,14 @@ def get_top_urls(index=0) -> dict:
         'url': v_url,
       })
     data[name] = values
+
+  for other in others:
+    name = other.get_text(strip=True)
+    url = base_url + other.a['href']
+    data['其他'].append({
+      'name': name,
+      'url': url,
+    })
 
   return data
 
@@ -79,4 +90,4 @@ def count_fields(urls):
 
 
 if __name__ == '__main__':
-  get_top_urls()
+  get_top_urls(index=1)

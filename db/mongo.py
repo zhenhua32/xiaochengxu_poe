@@ -21,9 +21,20 @@ client = MongoClient(mongo_url)
 # 数据库名, 存储所有的数据
 db = client[dbname]
 
-# item: 存放所有的物品
+# item: 存放基本物品
 coll_item = db['item']
 create_index(coll_item, indexs={
+  'name': {
+    'key': 'name',
+    'kwargs': {
+      'unique': True
+    }
+  },
+})
+
+# legend: 传奇物品
+coll_legend = db['legend']
+create_index(coll_legend, indexs={
   'name': {
     'key': 'name',
     'kwargs': {

@@ -16,8 +16,24 @@ class TYPE(Enum):
 {% for key, items in data.items() -%}
 @unique
 class TYPE_{{ key }}(Enum):
-{% for name in items %}
-  {{ name|string|striptags|trim }} = '{{ name|string|striptags|trim }}'
+{% for item in items %}
+  {{ item["name"]|string|striptags|trim }} = '{{ item["name"]|string|striptags|trim }}'
+{% endfor %}
+
+
+{% endfor %}
+@unique
+class LEGEND_TYPE(Enum):
+{% for key in legend.keys() %}
+  {{ key|string|striptags|trim }} = '{{ key|string|striptags|trim }}'
+{% endfor %}
+
+
+{% for key, items in legend.items() -%}
+@unique
+class LEGEND_TYPE_{{ key }}(Enum):
+{% for item in items %}
+  {{ item["name"]|string|striptags|trim }} = '{{ item["name"]|string|striptags|trim }}'
 {% endfor %}
 
 

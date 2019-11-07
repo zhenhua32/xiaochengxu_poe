@@ -139,3 +139,10 @@ item_帝王迷宫 = {
   '效果': [],
   '英文名': str,
 }
+
+legend_type = {
+  'name': str,
+  'type': TYPE,
+  'sub_type': '',
+  'update': datetime.datetime.utcnow(),
+}
