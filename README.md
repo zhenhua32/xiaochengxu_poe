@@ -35,4 +35,12 @@ python -m gen.enums
 
 ```bash
 python -m spiders.宝石
+python -m spiders.单手武器
+python -m spiders.帝王迷宫
+python -m spiders.副手
+python -m spiders.护具
+python -m spiders.其他
+python -m spiders.饰品
+python -m spiders.双手武器
+python -m spiders.药剂
 ```

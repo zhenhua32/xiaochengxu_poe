@@ -43,6 +43,7 @@ def get_top_urls(index=0) -> dict:
   subs = panel.select('ul')
   others = panel.select('ul.double > li[class^=col-xs-6]')
 
+  # 处理大类和子类
   for title, sub in zip(titles, subs):
     name = title.get_text(strip=True).replace('：', '')
     values = []
@@ -55,6 +56,7 @@ def get_top_urls(index=0) -> dict:
       })
     data[name] = values
 
+  # 处理没有被显著分类的
   for other in others:
     name = other.get_text(strip=True)
     url = base_url + other.a['href']

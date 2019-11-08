@@ -28,7 +28,7 @@ def parse_text(text: str) -> [str, str]:
   return key, value
 
 
-def parse_html(html: str, atype: str, sub_type: str) -> dict:
+def parse_html(html: str, atype: str, sub_type: str, img_url: str) -> dict:
   '''解析一条记录'''
   texts = html.replace('<br/>', '<br>').split('<br>')
 
@@ -43,6 +43,7 @@ def parse_html(html: str, atype: str, sub_type: str) -> dict:
     'sub_type': sub_type,
     'update': datetime.datetime.utcnow(),
     'url': item_url,
+    'img_url': img_url,
     '需求': None,
     '效果': [],
     '英文名': en_name,
@@ -72,7 +73,8 @@ def parse_page(url, type_enum, atype, save_in_db=True):
   sub_type = type_enum(caption).value
 
   for line in data['data']:
-    doc = parse_html(line[1], atype, sub_type)
+    img_url = BeautifulSoup(line[0], 'html5lib').img['src']
+    doc = parse_html(line[1], atype, sub_type, img_url)
     print(doc)
     if save_in_db:
       try:
