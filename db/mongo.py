@@ -42,3 +42,22 @@ create_index(coll_legend, indexs={
     }
   },
 })
+
+if __name__ == '__main__':
+  doc = coll_item.find_one({'name': '拳钉'})
+  keys = ['_id', 'name', 'type', 'sub_type', 'update', 'url', 'img_url']
+  result = {}
+  text = []
+  for key, value in doc.items():
+    if key in keys:
+      result[key] = str(value)
+    else:
+      if key == '物理伤害':
+        text.append('{}: {}-{}'.format(key, value[0], value[1]))
+      elif key == '效果':
+        text += value
+      else:
+        text.append('{}: {}'.format(key, value))
+  result['lines'] = text
+
+  print(result)

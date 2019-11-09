@@ -29,6 +29,9 @@ https://github.com/admiralobvious/vyper
 
 ```bash
 python -m gen.enums
+python -m gen.sub_type
+python -m gen.jsondata -i ./log/item.json -o ./log/item_parse.json
+python -m gen.jsondata -i ./log/legend.json -o ./log/legend_parse.json
 ```
 
 获取数据
