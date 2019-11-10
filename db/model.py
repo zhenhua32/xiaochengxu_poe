@@ -23,6 +23,20 @@ item_type = {
   'type': TYPE,
   'sub_type': '',
   'update': datetime.datetime.utcnow(),
+  'url': str,
+  'img_url': str,
+  'tags': [],
+  '物理伤害': [int, int],
+  '攻击暴击率': Decimal128,
+  '每秒攻击次数': Decimal128,
+  '武器范围': Decimal128,
+  '护具': int,
+  '闪避值': int,
+  '能量护盾': int,
+  '格挡几率': Decimal128,
+  '效果': [],
+  '需求': str,
+  '英文名': str,
 }
 
 item_宝石 = {
@@ -30,11 +44,10 @@ item_宝石 = {
   'type': '宝石',
   'sub_type': TYPE_宝石,
   'update': datetime.datetime.utcnow(),
-  'required_level': int,
-  'tags': [],
-  'color': COLOR,
   'url': str,
   'img_url': str,
+  'tags': [],
+  'color': COLOR,
 }
 
 item_单手武器 = {

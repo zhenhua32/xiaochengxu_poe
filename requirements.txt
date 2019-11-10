@@ -3,3 +3,5 @@ requests~=2.22.0
 beautifulsoup4~=4.8.0
 jinja2~=2.10.3
 html5lib~=1.0.1
+selenium~=3.141.0
+pyppeteer~=0.0.25
