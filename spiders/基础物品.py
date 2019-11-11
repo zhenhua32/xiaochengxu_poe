@@ -4,11 +4,8 @@ import pymongo
 import requests
 from bs4 import BeautifulSoup
 
-from db.enums import TYPE_单手武器
 from db.mongo import coll_item
 from spiders.helps import base_url, get_top_urls, headers, json_url, field_handle
-
-urls = get_top_urls()['单手武器']
 
 
 def parse_text(text: str) -> [str, str]:
@@ -62,15 +59,12 @@ def parse_html(html: str, atype: str, sub_type: str, img_url: str) -> dict:
   return doc
 
 
-def parse_page(url, type_enum, atype, save_in_db=True):
+def parse_page(url, atype, sub_type, save_in_db=True):
   resp = requests.get(url, headers=headers)
   data = resp.json()
 
   if not isinstance(data, dict):
     return
-
-  caption = data['caption'].split(' ')[0]
-  sub_type = type_enum(caption).value
 
   for line in data['data']:
     img_url = BeautifulSoup(line[0], 'html5lib').img['src']
@@ -86,9 +80,14 @@ def parse_page(url, type_enum, atype, save_in_db=True):
 
 
 def run():
-  for item in urls:
-    url = json_url + item['url'].split('?')[-1]
-    parse_page(url, TYPE_单手武器, '单手武器')
+  '''获取所有的基础物品'''
+  urls = get_top_urls()
+  for atype, items in urls.items():
+    if atype in ['宝石']:
+      continue
+    for item in items:
+      url = json_url + item['url'].split('?')[-1]
+      parse_page(url, atype, item['name'], save_in_db=True)
 
 
 if __name__ == '__main__':
