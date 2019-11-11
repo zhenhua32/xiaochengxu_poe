@@ -21,9 +21,9 @@ def compress(path, out_path):
       subprocess.run([pngquant_cmd, '-'], stdin=stdin, stdout=stdout)
 
 
-def compress_dir():
-  img_dir = data_dir / 'img' / '宝石'
-  out_dir = data_dir / 'compress' / '宝石'
+def compress_dir(last_dir_name):
+  img_dir = data_dir / 'img' / last_dir_name
+  out_dir = data_dir / 'compress' / last_dir_name
   os.makedirs(out_dir, exist_ok=True)
 
   files = glob.glob(img_dir.as_posix() + '/*.png')
@@ -39,4 +39,4 @@ def compress_dir():
 
 
 if __name__ == '__main__':
-  compress_dir()
+  compress_dir(last_dir_name='传奇')

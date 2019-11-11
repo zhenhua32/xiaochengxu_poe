@@ -28,8 +28,7 @@ def parse_page(url):
   return urls
 
 
-async def capture(url):
-  browser = await launch()
+async def capture(browser, url):
   page = await browser.newPage()
   # 设置设备模拟, 缩放为 200%
   await page.emulate(viewport={
@@ -50,30 +49,32 @@ async def capture(url):
 
 
 async def run():
+  browser = await launch()
+
   urls = parse_page(active_url) | parse_page(support_url)
   print('urls: {}'.format(len(urls)))
   remain = {x: 0 for x in urls}
 
   async def run_loop():
-    for url in [k for k, v in remain.items() if v == 0]:
+    for url in [k for k, v in remain.items() if -3 < v < 1]:
       try:
-        await capture(url)
+        await capture(browser, url)
         remain[url] = 1
       except Exception as e:
         remain[url] -= 1
         print(e)
         print(url)
-        pass
 
   # 重试机制 3 次
   while True:
-    remain_count = len([k for k, v in remain.items() if -3 < k < 1])
+    remain_count = len([k for k, v in remain.items() if -3 < v < 1])
     print(remain_count)
     if remain_count == 0:
       break
     await run_loop()
 
-  print('剩余无法获取的链接', [k for k, v in remain.items() if k != 1])
+  print('剩余无法获取的链接', [k for k, v in remain.items() if v != 1])
+  await browser.close()
 
 
 if __name__ == '__main__':
