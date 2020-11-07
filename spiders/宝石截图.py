@@ -49,7 +49,7 @@ async def capture(browser, url):
 
 
 async def run():
-  browser = await launch()
+  browser = await launch(autoClose=False)
 
   urls = parse_page(active_url) | parse_page(support_url)
   print('urls: {}'.format(len(urls)))

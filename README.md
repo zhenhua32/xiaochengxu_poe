@@ -2,6 +2,8 @@
 
 ## TODO
 
+19 年末的代码, 主要应该是获取流放之路的资料以及截图.
+
 ### 配置解析
 
 https://github.com/henriquebastos/python-decouple
